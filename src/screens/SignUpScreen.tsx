@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 import Subtitle from '../components/Subtitle';
 import Title from '../components/Title';
@@ -18,42 +18,44 @@ const SignUpScreen: React.FC = () => {
 
   return (
     <Screen>
-      <View style={styles.mainContainer}>
-        <Title title={`Sign up\n and jump right in`}></Title>
-        <Subtitle
-          subtitle="We are pretty sure you will use this thing to become better and better every day"
-          style={styles.subtitle}
-        />
-        <TextInput
-          mode="outlined"
-          inputMode="text"
-          style={styles.input}
-          placeholder="Name"
-          outlineStyle={styles.inputField}
-        />
-        <TextInput
-          mode="outlined"
-          inputMode="email"
-          style={styles.input}
-          placeholder="Email"
-          outlineStyle={styles.inputField}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          mode="outlined"
-          outlineStyle={styles.inputField}
-          secureTextEntry={hidePassword}
-          right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)} />}
-        />
-        <Button
-          mode="contained"
-          style={styles.button}
-          onPress={() => navigation.navigate(Routes.UserInfo)}
-        >
-          Register
-        </Button>
-      </View>
+      <ScrollView>
+        <View style={styles.mainContainer}>
+          <Title title={`Sign up\n and jump right in`}></Title>
+          <Subtitle
+            subtitle="We are pretty sure you will use this thing to become better and better every day"
+            style={styles.subtitle}
+          />
+          <TextInput
+            mode="outlined"
+            inputMode="text"
+            style={styles.input}
+            placeholder="Name"
+            outlineStyle={styles.inputField}
+          />
+          <TextInput
+            mode="outlined"
+            inputMode="email"
+            style={styles.input}
+            placeholder="Email"
+            outlineStyle={styles.inputField}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            mode="outlined"
+            outlineStyle={styles.inputField}
+            secureTextEntry={hidePassword}
+            right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)} />}
+          />
+          <Button
+            mode="contained"
+            style={styles.button}
+            onPress={() => navigation.navigate(Routes.UserInfo)}
+          >
+            Register
+          </Button>
+        </View>
+      </ScrollView>
       <Button mode="text" style={styles.button} onPress={() => navigation.navigate(Routes.Login)}>
         Got an account? Sign In!
       </Button>
