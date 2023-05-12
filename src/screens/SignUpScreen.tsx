@@ -15,6 +15,9 @@ type RoutePropType = StackNavigationProp<RouteParams, Routes.Welcome>;
 const SignUpScreen: React.FC = () => {
   const [hidePassword, setHidePassword] = React.useState(true);
   const navigation = useNavigation<RoutePropType>();
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
 
   return (
     <Screen>
@@ -38,25 +41,45 @@ const SignUpScreen: React.FC = () => {
             style={styles.input}
             placeholder="Email"
             outlineStyle={styles.inputField}
+            value={email}
+            onChangeText={text => setEmail(text)}
           />
           <TextInput
+            value={password}
+            onChangeText={text => setPassword(text)}
             style={styles.input}
             placeholder="Password"
             mode="outlined"
             outlineStyle={styles.inputField}
             secureTextEntry={hidePassword}
-            right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)} />}
+            right={<TextInput.Icon icon="eye" onPress={() => setHidePassword(!hidePassword)}
+            />}
           />
           <Button
             mode="contained"
             style={styles.button}
-            onPress={() => navigation.navigate(Routes.UserInfo)}
+            onPress={async () => {
+              console.log(email, password);
+              await fetch('https://fit-panda.e-spres-oh.com/auth/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  email: email,
+                  password: password,
+                }),
+              })
+              .then(response => response.json().then(data => console.log(data)))
+              .finally(() => { navigation.navigate(Routes.UserInfo) });
+            }}
           >
             Register
           </Button>
         </View>
       </ScrollView>
-      <Button mode="text" style={styles.button} onPress={() => navigation.navigate(Routes.Login)}>
+      <Button mode="text" style={styles.button} onPress={() => {
+
+        navigation.navigate(Routes.Login);
+      }}>
         Got an account? Sign In!
       </Button>
     </Screen>

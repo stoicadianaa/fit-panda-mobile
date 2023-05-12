@@ -82,7 +82,7 @@ const UserGoalsScreen: React.FC = () => {
             mode="contained"
             style={styles.bottomButton}
             onPress={() => {
-              navigation.navigate(Routes.UserActivityScreen);
+              navigation.navigate(Routes.SignupFinish);
             }}
           >
             Next

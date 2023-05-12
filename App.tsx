@@ -10,6 +10,7 @@ import UserInfoScreen from './src/screens/UserInfoScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import UserActivityScreen from './src/screens/UserActivityScreen';
 import UserGoalsScreen from './src/screens/UserGoalScreen';
+import SignupFinish from './src/screens/SignupFinishScreen';
 
 const colors = {
   primary: '#5589f8',
@@ -71,6 +72,13 @@ export default function App() {
             <Stack.Screen
               name={Routes.UserGoalsScreen}
               component={UserGoalsScreen}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name={Routes.SignupFinish}
+              component={SignupFinish}
               options={{
                 headerShown: false,
               }}
