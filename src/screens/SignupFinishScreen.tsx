@@ -39,7 +39,7 @@ const SignupFinish: React.FC = () => {
 
             }}
           >
-            Register
+            Start your journey!
           </Button>
         </View>
       </ScrollView>
