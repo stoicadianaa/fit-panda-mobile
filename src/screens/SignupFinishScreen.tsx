@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
+import { Button, TextInput } from 'react-native-paper';
+import Subtitle from '../components/Subtitle';
+import Title from '../components/Title';
 import Screen from '../components/layout/Screen';
 import { Colors } from '../constants';
 import { Routes } from '../routes/routes';
@@ -12,51 +14,66 @@ type RoutePropType = StackNavigationProp<RouteParams, Routes.SignupFinish>;
 
 const SignupFinish: React.FC = () => {
   const navigation = useNavigation<RoutePropType>();
+
   return (
     <Screen>
-      <Image source={require('../../assets/logo.png')} style={styles.logo} resizeMode="contain" />
-      <View style={styles.buttonsContainer}>
-        <Button
-          style={styles.button}
-          mode="contained"
-          onPress={() => {
-            navigation.navigate(Routes.SignUp);
-          }}
-        >
-          Sign up for free
-        </Button>
-        <Button
-          style={styles.button}
-          mode="outlined"
-          textColor="#000"
-          onPress={() => {
-            navigation.navigate(Routes.Login);
-          }}
-        >
-          Login
-        </Button>
-      </View>
+      <ScrollView>
+        <View style={styles.mainContainer}>
+          <Title title={'Sign up\n and jump right in'}></Title>
+          <Subtitle
+            subtitle={'Your custom plan is ready and you’re one step closer to your goal weight \n \n \n Your KCals allowance per day is'}
+            style={styles.subtitle}
+          />
+          <TextInput
+          editable={false}
+            mode="outlined"
+            inputMode="text"
+            style={styles.input}
+            placeholder="2600"
+            outlineStyle={styles.inputField}
+          />
+          <Button
+            mode="contained"
+            style={styles.button}
+            onPress={() => {
+
+            }}
+          >
+            Register
+          </Button>
+        </View>
+      </ScrollView>
+
     </Screen>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
-    marginTop: 10,
-  },
-  container: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    height: '100%',
+  background: {
     backgroundColor: Colors.background,
   },
-  buttonsContainer: {
-    width: '100%',
+  subtitle: {
+    marginTop: 15,
     marginBottom: 20,
+    marginHorizontal: 15,
   },
-  logo: {
-    width: '90%',
+  mainContainer: {
+    justifyContent: 'center',
+    flexGrow: 1,
+  },
+  inputField: {
+    borderRadius: 5,
+    backgroundColor: Colors.inputBackground,
+    borderWidth: 0,
+  },
+  input: {
+    width: '100%',
+    marginVertical: 10,
+    textAlign: 'center',
+  },
+  button: {
+    marginVertical: 20,
+    width: '100%',
   },
 });
 
