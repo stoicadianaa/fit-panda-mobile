@@ -4,6 +4,6 @@ export enum Routes {
   SignUp = 'Sign up',
   UserInfo = 'User info',
   UserActivityScreen = 'User info activity',
-  UserInfoGoals = 'User info goals',
-  SignupCongrats = 'Signup congrats',
+  UserGoalsScreen = 'User info goals',
+  SignupFinish = 'Signup congrats',
 }

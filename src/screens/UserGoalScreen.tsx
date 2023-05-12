@@ -11,9 +11,9 @@ import { Colors } from '../constants';
 import { Routes } from '../routes/routes';
 import { RouteParams } from '../routes/types';
 
-type RoutePropType = StackNavigationProp<RouteParams, Routes.UserActivityScreen>;
+type RoutePropType = StackNavigationProp<RouteParams, Routes.UserGoalsScreen>;
 
-const UserActivityScreen: React.FC = () => {
+const UserGoalsScreen: React.FC = () => {
   const navigation = useNavigation<RoutePropType>();
   const [value, setValue] = useState('');
 
@@ -22,82 +22,54 @@ const UserActivityScreen: React.FC = () => {
       <ScrollView bounces={false}>
         <View style={styles.scrollViewContainer}>
           <View style={styles.titleContainer}>
-            <Title title={'What is your activity level?'} />
+            <Title title={'What is your goal?'} />
           </View>
           <View style={styles.inputFieldsContainer}>
-            <Text style={styles.inputLabel}>
-              Little or no activity
-            </Text>
             <SegmentedButtons
               value={value}
               onValueChange={setValue}
               style={styles.selectable}
               buttons={[
                 {
-                  value: 'low',
-                  label: 'Low',
+                  value: 'lose',
+                  label: 'Lose Weight',
                   style: {
                     backgroundColor:
-                      value === 'low' ? Colors.selectedButton : Colors.inputBackground,
+                      value === 'lose' ? Colors.selectedButton : Colors.inputBackground,
                     borderWidth: 0,
                     justifyContent: 'center',
                   },
                 },
               ]}
             />
-            <Text style={styles.inputLabel}>
-            Walking or cycling to work, light chores in spare time            </Text>
             <SegmentedButtons
               value={value}
               onValueChange={setValue}
               style={styles.selectable}
               buttons={[
                 {
-                  value: 'moderate',
-                  label: 'Moderate',
+                  value: 'mantain',
+                  label: 'Maintain Weight',
                   style: {
                     backgroundColor:
-                      value === 'moderate' ? Colors.selectedButton : Colors.inputBackground,
+                      value === 'mantain' ? Colors.selectedButton : Colors.inputBackground,
                     borderWidth: 0,
                     justifyContent: 'center',
                   },
                 },
               ]}
             />
-            <Text style={styles.inputLabel}>
-            Physical activity throughout the day. Active in spare time           
-            </Text>
             <SegmentedButtons
               value={value}
               onValueChange={setValue}
               style={styles.selectable}
               buttons={[
                 {
-                  value: 'high',
-                  label: 'High',
+                  value: 'gain',
+                  label: 'Gain Weight',
                   style: {
                     backgroundColor:
-                      value === 'high' ? Colors.selectedButton : Colors.inputBackground,
-                    borderWidth: 0,
-                    justifyContent: 'center',
-                  },
-                },
-              ]}
-            />
-            <Text style={styles.inputLabel}>
-            Physically demanding daily activity, Intense activity in spare time       
-            </Text>
-            <SegmentedButtons
-              value={value}
-              onValueChange={setValue}
-              style={styles.selectable}
-              buttons={[
-                {
-                  value: 'very high',
-                  label: 'Very High',
-                  style: {
-                    backgroundColor:
-                      value === 'very high' ? Colors.selectedButton : Colors.inputBackground,
+                      value === 'gain' ? Colors.selectedButton : Colors.inputBackground,
                     borderWidth: 0,
                     justifyContent: 'center',
                   },
@@ -110,7 +82,7 @@ const UserActivityScreen: React.FC = () => {
             mode="contained"
             style={styles.bottomButton}
             onPress={() => {
-              navigation.navigate(Routes.UserGoalsScreen);
+              navigation.navigate(Routes.UserActivityScreen);
             }}
           >
             Next
@@ -146,7 +118,6 @@ const styles = StyleSheet.create({
   },
   selectable: {
     height: 48,
-    marginBottom: 20,
     marginTop: 10,
   },
   inputField: {
@@ -164,7 +135,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: '100%',
     marginVertical: 20,
+    marginTop: 30,
   },
 });
 
-export default UserActivityScreen;
+export default UserGoalsScreen;
