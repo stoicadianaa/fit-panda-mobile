@@ -11,9 +11,9 @@ import { Colors } from '../constants';
 import { Routes } from '../routes/routes';
 import { RouteParams } from '../routes/types';
 
-type RoutePropType = StackNavigationProp<RouteParams, Routes.UserInfo>;
+type RoutePropType = StackNavigationProp<RouteParams, Routes.UserActivityScreen>;
 
-const UserInfoScreen: React.FC = () => {
+const UserActivityScreen: React.FC = () => {
   const navigation = useNavigation<RoutePropType>();
   const [value, setValue] = useState('');
 
@@ -22,15 +22,11 @@ const UserInfoScreen: React.FC = () => {
       <ScrollView bounces={false}>
         <View style={styles.scrollViewContainer}>
           <View style={styles.titleContainer}>
-            <Title title={'Welcome!'} />
-            <Subtitle
-              subtitle={'Let’s customise Fit Pand for your Goals'}
-              style={styles.subtitle}
-            ></Subtitle>
+            <Title title={'What is your activity level?'} />
           </View>
           <View style={styles.inputFieldsContainer}>
             <Text style={styles.inputLabel}>
-              Please select witch sex we should use to calculate your calorie needs
+              Little or no activity
             </Text>
             <SegmentedButtons
               value={value}
@@ -38,49 +34,75 @@ const UserInfoScreen: React.FC = () => {
               style={styles.selectable}
               buttons={[
                 {
-                  value: 'male',
-                  label: 'Male',
+                  value: 'low',
+                  label: 'Low',
                   style: {
                     backgroundColor:
-                      value === 'male' ? Colors.selectedButton : Colors.inputBackground,
-                    borderWidth: 0,
-                    justifyContent: 'center',
-                  },
-                },
-                {
-                  value: 'female',
-                  label: 'Female',
-                  style: {
-                    backgroundColor:
-                      value === 'female' ? Colors.selectedButton : Colors.inputBackground,
+                      value === 'low' ? Colors.selectedButton : Colors.inputBackground,
                     borderWidth: 0,
                     justifyContent: 'center',
                   },
                 },
               ]}
             />
-            <Text style={styles.inputLabel}>How tall are you?</Text>
-            <TextInput
-              mode="outlined"
-              inputMode="text"
-              style={styles.input}
-              placeholder={'170 cm'}
-              outlineStyle={styles.inputField}
+            <Text style={styles.inputLabel}>
+            Walking or cycling to work, light chores in spare time            </Text>
+            <SegmentedButtons
+              value={value}
+              onValueChange={setValue}
+              style={styles.selectable}
+              buttons={[
+                {
+                  value: 'moderate',
+                  label: 'Moderate',
+                  style: {
+                    backgroundColor:
+                      value === 'moderate' ? Colors.selectedButton : Colors.inputBackground,
+                    borderWidth: 0,
+                    justifyContent: 'center',
+                  },
+                },
+              ]}
             />
-            <Text style={styles.inputLabel}>How much do you weigh?</Text>
-            <TextInput
-              mode="outlined"
-              inputMode="email"
-              style={styles.input}
-              placeholder="80 kg"
-              outlineStyle={styles.inputField}
+            <Text style={styles.inputLabel}>
+            Physical activity throughout the day. Active in spare time           
+            </Text>
+            <SegmentedButtons
+              value={value}
+              onValueChange={setValue}
+              style={styles.selectable}
+              buttons={[
+                {
+                  value: 'high',
+                  label: 'High',
+                  style: {
+                    backgroundColor:
+                      value === 'high' ? Colors.selectedButton : Colors.inputBackground,
+                    borderWidth: 0,
+                    justifyContent: 'center',
+                  },
+                },
+              ]}
             />
-            <Text style={styles.inputLabel}>How old are you?</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="40"
-              mode="outlined"
-              outlineStyle={styles.inputField}
+            <Text style={styles.inputLabel}>
+            Physically demanding daily activity, Intense activity in spare time       
+            </Text>
+            <SegmentedButtons
+              value={value}
+              onValueChange={setValue}
+              style={styles.selectable}
+              buttons={[
+                {
+                  value: 'very high',
+                  label: 'Very High',
+                  style: {
+                    backgroundColor:
+                      value === 'very high' ? Colors.selectedButton : Colors.inputBackground,
+                    borderWidth: 0,
+                    justifyContent: 'center',
+                  },
+                },
+              ]}
             />
           </View>
 
@@ -105,6 +127,8 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 1,
+    marginVertical: 20,
+    marginHorizontal: 24,
   },
   subtitle: {
     marginTop: 10,
@@ -115,7 +139,8 @@ const styles = StyleSheet.create({
   },
   inputLabel: {
     fontSize: 15,
-    marginHorizontal: 50,
+    marginHorizontal: 40,
+    marginTop: 10,
     textAlign: 'center',
     color: Colors.textLabel,
   },
@@ -142,4 +167,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UserInfoScreen;
+export default UserActivityScreen;

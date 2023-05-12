@@ -5,4 +5,7 @@ export type RouteParams = {
   [Routes.Login]: undefined;
   [Routes.SignUp]: undefined;
   [Routes.UserInfo]: undefined;
+  [Routes.UserActivityScreen]: undefined;
+  [Routes.UserInfoGoals]: undefined;
+  [Routes.SignupCongrats]: undefined;
 };
